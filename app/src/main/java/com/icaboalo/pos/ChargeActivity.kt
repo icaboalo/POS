@@ -1,5 +1,6 @@
 package com.icaboalo.pos
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -44,7 +45,6 @@ class ChargeActivity : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val success = snapshot.getValue(Boolean::class.java)!!
-                tv.text = if (success) "Cobro exitoso al cliente" else "No se pudo completar la transacción con el cliente."
                 updateFirebase(text, success)
             }
         })
@@ -53,5 +53,11 @@ class ChargeActivity : AppCompatActivity() {
     fun updateFirebase(text: String, completed: Boolean) {
         val database = FirebaseDatabase.getInstance()
         database.getReference("$text/client").setValue(completed)
+
+        val intent = Intent(this, CompletitionActivity::class.java)
+        intent.putExtra("success", completed)
+        intent.putExtra("amount", intent.getStringExtra("amount"))
+        startActivity(intent)
+        finish()
     }
 }

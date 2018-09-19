@@ -7,16 +7,20 @@
     tools:context=".ChargeActivity">
 
     <TextView
+        android:textColor="#000"
         android:layout_gravity="center"
-        android:text="Escanea el código del cliente"
+        android:text="Escanea el código QR del cliente"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="40sp"
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:textColor="@android:color/transparent"
+        android:background="@android:color/transparent"
         android:clickable="false"
+        android:textCursorDrawable="@null"
         android:id="@+id/et_scan"
         android:focusedByDefault="true"
         android:layout_width="match_parent"
