@@ -56,7 +56,7 @@ class ChargeActivity : AppCompatActivity() {
 
         val intent = Intent(this, CompletitionActivity::class.java)
         intent.putExtra("success", completed)
-        intent.putExtra("amount", intent.getStringExtra("amount"))
+        intent.putExtra("amount", this.intent.getStringExtra("amount"))
         startActivity(intent)
         finish()
     }
