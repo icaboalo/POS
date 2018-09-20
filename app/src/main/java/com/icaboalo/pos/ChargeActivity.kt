@@ -53,6 +53,7 @@ class ChargeActivity : AppCompatActivity() {
     fun updateFirebase(text: String, completed: Boolean) {
         val database = FirebaseDatabase.getInstance()
         database.getReference("$text/client").setValue(completed)
+        database.getReference("$text/amount").setValue(this.intent.getStringExtra("amount"))
 
         val intent = Intent(this, CompletitionActivity::class.java)
         intent.putExtra("success", completed)
